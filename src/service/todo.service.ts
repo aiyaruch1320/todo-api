@@ -1,26 +1,9 @@
 import { ITodo } from "../interface/todo";
+import Todo from "../models/todo";
 
 export default class TodoService {
   constructor() {}
-  async getTodoLists() {
-    const todoLists: ITodo[] = [
-      {
-        id: "1",
-        content: "Hello World",
-        completed: false,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        order: 1,
-      },
-      {
-        id: "2",
-        content: "Test",
-        completed: false,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        order: 2,
-      },
-    ];
-    return todoLists;
+  async getTodoLists(): Promise<ITodo[]> {
+    return await Todo.find();
   }
 }
