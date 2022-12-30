@@ -1,3 +1,7 @@
 import express from "express";
+import todoHandler from "../handler/todo.handler";
 
-export const todoRoutes = express.Router();
+const todoRoutes = express.Router();
+todoRoutes.get("/", todoHandler.getTodoLists);
+
+export default todoRoutes;
