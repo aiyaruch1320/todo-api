@@ -1,9 +1,11 @@
 import cors from "cors";
 import express from "express";
+import { connectDB } from "./config/db";
 import appRoutes from "./routes/app.routes";
 
 export const buildExpress = () => {
   const app = express();
+  connectDB();
   app.use(express.json());
   app.use(
     cors({
