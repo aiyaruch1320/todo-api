@@ -1,5 +1,6 @@
 import cors from "cors";
 import express from "express";
+import appRoutes from "./routes/app.routes";
 
 export const buildExpress = () => {
   const app = express();
@@ -16,5 +17,6 @@ export const buildExpress = () => {
   app.get("/version", (req, res) => {
     res.send("version 0.1.0");
   });
+  app.use("/api", appRoutes);
   return app;
 };
