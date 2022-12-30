@@ -20,6 +20,15 @@ class TodoHandler {
       res.status(500).json(err);
     }
   };
+
+  deleteTodo = async (req: Request, res: Response) => {
+    try {
+      await this.todoService.deleteTodoById(req.params.id);
+      res.status(200);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  };
 }
 
 export default new TodoHandler();

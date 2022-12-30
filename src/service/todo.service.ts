@@ -14,4 +14,8 @@ export default class TodoService {
       updatedAt: new Date(),
     });
   }
+
+  async deleteTodoById(id: string) {
+    return await Todo.findByIdAndDelete(id);
+  }
 }
