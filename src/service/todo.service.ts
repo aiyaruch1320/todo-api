@@ -6,4 +6,12 @@ export default class TodoService {
   async getTodoLists(): Promise<ITodo[]> {
     return await Todo.find();
   }
+
+  async createTodo(todo: ITodo) {
+    return await Todo.create({
+      ...todo,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+  }
 }

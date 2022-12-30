@@ -11,6 +11,15 @@ class TodoHandler {
       res.status(500).json(err);
     }
   };
+
+  createTodo = async (req: Request, res: Response) => {
+    try {
+      const todo = await this.todoService.createTodo(req.body);
+      res.status(200).json(todo);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  };
 }
 
 export default new TodoHandler();
