@@ -1,17 +1,16 @@
 import "dotenv/config";
-import express from "express";
+import { buildExpress } from "./app";
 
 const port = process.env.PORT;
-const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hi! Todo App");
-});
+const start = () => {
+  const app = buildExpress();
+  app.listen(port, () => {
+    console.log(
+      `Server is running on port ${port}, on ENV: ${process.env.ENVIRONMENT}`
+    );
+  });
+  return app;
+};
 
-app.get("/version", (req, res) => {
-  res.send("version 0.1.0");
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+start();
