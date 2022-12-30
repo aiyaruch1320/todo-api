@@ -9,7 +9,17 @@ const TodoSchema = new Schema(
     updatedAt: { type: Date, required: true },
     order: { type: Number, required: true },
   },
-  { timestamps: true }
+  {
+    toJSON: {
+      transform: (doc, ret) => {
+        ret.id = ret._id;
+        delete ret._id;
+        delete ret.__v;
+        return ret;
+      },
+    },
+    timestamps: true,
+  }
 );
 
 const Todo = mongoose.model("Todo", TodoSchema);
