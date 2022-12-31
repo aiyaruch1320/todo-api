@@ -12,3 +12,12 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: 1234
       MONGO_INITDB_DATABASE: todoApp
+  todo-api:
+    build: .
+    image: todo-api:0.1.0
+    container_name: todo-api
+    restart: always
+    ports:
+      - 8000:8000
+    depends_on:
+      - mongodb
