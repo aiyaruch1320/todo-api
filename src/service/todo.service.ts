@@ -15,6 +15,20 @@ export default class TodoService {
     });
   }
 
+  async sortTodoLists(todos: ITodo[]) {
+    return await Promise.all(
+      todos.map(async (todo) => {
+        return await Todo.updateOne(
+          { _id: todo.id },
+          {
+            ...todo,
+            updatedAt: new Date(),
+          }
+        );
+      })
+    );
+  }
+
   async deleteTodoById(id: string) {
     return await Todo.findByIdAndDelete(id);
   }

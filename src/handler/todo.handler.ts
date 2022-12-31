@@ -21,10 +21,19 @@ class TodoHandler {
     }
   };
 
+  sortTodoLists = async (req: Request, res: Response) => {
+    try {
+      await this.todoService.sortTodoLists(req.body);
+      res.status(200).json({ message: "sorted success" });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  };
+
   deleteTodo = async (req: Request, res: Response) => {
     try {
       await this.todoService.deleteTodoById(req.params.id);
-      res.status(200);
+      res.status(200).json({ message: "deleted success" });
     } catch (err) {
       res.status(500).json(err);
     }
